@@ -45,7 +45,15 @@ def upload():
                 file.save(os.path.join(user_folder, file.filename))
     images = os.listdir(user_folder)
     return render_template("gallery.html", images=images, username=username)
-
+@app.route('/show-users')
+def show_users():
+    try:
+        with open('users.txt', 'r') as f:
+            users = f.readlines()
+        users = [user.strip() for user in users]
+        return "<br>".join(users)
+    except:
+        return "لم يتم العثور على أي مستخدمين."
 @app.route("/uploads/<username>/<filename>")
 def uploaded_file(username, filename):
     return send_from_directory(os.path.join(UPLOAD_FOLDER, username), filename)
