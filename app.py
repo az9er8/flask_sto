@@ -51,4 +51,4 @@ def uploaded_file(username, filename):
     return send_from_directory(os.path.join(UPLOAD_FOLDER, username), filename)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
