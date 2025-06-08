@@ -82,4 +82,6 @@ def show_users():
     return "<br>".join([f"{u[0]} - {u[1]} - {u[2]}" for u in users])
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    init_db()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
